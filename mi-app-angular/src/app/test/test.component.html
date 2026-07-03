@@ -1,1 +1,154 @@
-<p>test works!</p>
+<app-son [messageFather]="message"></app-son>
+<div class="cv-container">
+  <!-- Encabezado con información personal -->
+  <header class="cv-header">
+    <div class="profile-info">
+      <h1>{{ name }}</h1>
+      <h1>{{ message }}</h1>
+      <button class="download-btn" (click)="click()">Descargar CV en PDF</button>
+      <p class="job-title">Desarrollador Full Stack</p>
+      <div class="contact-info">
+        <span>📧 juan.perez@email.com</span>
+        <span>📱 +34 612 345 678</span>
+        <span>📍 Madrid, España</span>
+        <span>🔗 linkedin.com/in/juanperez</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Resumen profesional -->
+  <section class="cv-section">
+    <h2>Resumen Profesional</h2>
+    <p>Desarrollador con más de 5 años de experiencia en desarrollo web full stack. Especializado en Angular, Node.js y bases de datos. Apasionado por escribir código limpio y trabajar en equipo.</p>
+  </section>
+
+  <!-- Experiencia profesional -->
+  <section class="cv-section">
+    <h2>Experiencia Profesional</h2>
+    <article class="experience-item">
+      <div class="experience-header">
+        <h3>Senior Developer</h3>
+        <span class="company">Tech Company S.L.</span>
+        <span class="period">Enero 2021 - Presente</span>
+      </div>
+      <ul>
+        <li>Desarrollo de aplicaciones web con Angular 11+</li>
+        <li>Implementación de APIs REST con Node.js</li>
+        <li>Gestión de bases de datos con MongoDB y PostgreSQL</li>
+      </ul>
+    </article>
+
+    <article class="experience-item">
+      <div class="experience-header">
+        <h3>Mid-level Developer</h3>
+        <span class="company">Digital Solutions Inc.</span>
+        <span class="period">Junio 2018 - Diciembre 2020</span>
+      </div>
+      <ul>
+        <li>Desarrollo frontend con Angular 8-10</li>
+        <li>Mantenimiento de aplicaciones heredadas</li>
+        <li>Testing y QA de componentes</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- Educación -->
+  <section class="cv-section">
+    <h2>Educación</h2>
+    <article class="education-item">
+      <div class="education-header">
+        <h3>Grado en Ingeniería Informática</h3>
+        <span class="institution">Universidad Politécnica de Madrid</span>
+        <span class="year">2018</span>
+      </div>
+    </article>
+
+    <article class="education-item">
+      <div class="education-header">
+        <h3>Bootcamp Desarrollo Full Stack</h3>
+        <span class="institution">Academia Tech</span>
+        <span class="year">2017</span>
+      </div>
+    </article>
+  </section>
+
+  <!-- Habilidades -->
+  <section class="cv-section">
+    <h2>Habilidades Técnicas</h2>
+    <div class="skills-container">
+      <div class="skill-category">
+        <h4>Frontend</h4>
+        <div class="skills-list">
+          <span class="skill-tag">Angular</span>
+          <span class="skill-tag">TypeScript</span>
+          <span class="skill-tag">HTML5</span>
+          <span class="skill-tag">CSS3</span>
+          <span class="skill-tag">RxJS</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h4>Backend</h4>
+        <div class="skills-list">
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Express</span>
+          <span class="skill-tag">REST APIs</span>
+          <span class="skill-tag">Autenticación</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h4>Bases de Datos</h4>
+        <div class="skills-list">
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">SQL</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h4>Herramientas</h4>
+        <div class="skills-list">
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Jira</span>
+          <span class="skill-tag">Jenkins</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certificaciones -->
+  <section class="cv-section">
+    <h2>Certificaciones</h2>
+    <article class="certification-item">
+      <h4>Angular Advanced Certification</h4>
+      <p class="issuer">Google Cloud Academy - 2023</p>
+    </article>
+
+    <article class="certification-item">
+      <h4>Docker Certified Associate</h4>
+      <p class="issuer">Docker Inc. - 2022</p>
+    </article>
+  </section>
+
+  <!-- Idiomas -->
+  <section class="cv-section">
+    <h2>Idiomas</h2>
+    <div class="languages-list">
+      <div class="language-item">
+        <h4>Español</h4>
+        <p>Nativo</p>
+      </div>
+      <div class="language-item">
+        <h4>Inglés</h4>
+        <p>C1 - Bilingüe</p>
+      </div>
+      <div class="language-item">
+        <h4>Francés</h4>
+        <p>B2 - Intermedio</p>
+      </div>
+    </div>
+  </section>
+</div>

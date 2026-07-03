@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestComponent implements OnInit {
 
+  name: string = "Sergio";
+  message : string = "";
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  click() {
+    alert("Descargando CV en PDF...");
+  }
+
+  getMessage(sonMessage: string) {
+    this.message = sonMessage;
+  }
+
 }
+ 
