@@ -1,0 +1,112 @@
+<div class="rickandmorty-container">
+  <h1>🎬 Rick and Morty API</h1>
+  
+  <!-- Sección de búsqueda -->
+  <div class="search-section">
+    <div class="search-box">
+      <input 
+        type="text" 
+        [(ngModel)]="searchQuery" 
+        placeholder="Busca un personaje por nombre..."
+        (keyup.enter)="searchCharacter()"
+        class="search-input"
+      >
+      <button (click)="searchCharacter()" class="btn btn-search">
+        🔍 Buscar
+      </button>
+      <button (click)="loadRandomCharacter()" class="btn btn-random">
+        🎲 Aleatorio
+      </button>
+    </div>
+  </div>
+
+  <!-- Indicador de carga -->
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Cargando personaje...</p>
+  </div>
+
+  <!-- Mensaje de error -->
+  <div *ngIf="error && !loading" class="error-message">
+    ❌ {{ error }}
+  </div>
+
+  <!-- Información del personaje -->
+  <div 
+    <div class="character-image-section">
+      <img 
+        [src]="character.image" 
+        [alt]="character.name"
+        class="character-image"
+      >
+    </div>
+
+    <div class="character-info">
+      <!-- Nombre y estado -->
+      <div class="character-header">
+        <h2>{{ character.name }}</h2>
+        <span [class]="'status ' + character.status.toLowerCase()">
+          {{ character.status }}
+        </span>
+      </div>
+
+      <!-- Información básica -->
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="label">Especie:</span>
+          <span class="value">{{ character.species }}</span>
+        </div>
+
+        <div class="info-item">
+          <span class="label">Género:</span>
+          <span class="value">{{ character.gender }}</span>
+        </div>
+
+        <div class="info-item">
+          <span class="label">Tipo:</span>
+          <span class="value">{{ character.type || 'N/A' }}</span>
+        </div>
+
+        <div class="info-item">
+          <span class="label">Apariciones:</span>
+          <span class="value">{{ character.episode.length }} episodios</span>
+        </div>
+      </div>
+
+      <!-- Ubicaciones -->
+      <div class="locations-section">
+        <div class="location-item">
+          <h4>📍 Origen</h4>
+          <p>{{ character.origin.name }}</p>
+        </div>
+
+        <div class="location-item">
+          <h4>📌 Ubicación Actual</h4>
+          <p>{{ character.location.name }}</p>
+        </div>
+      </div>
+
+      <!-- Episodios -->
+      <div class="episodes-section">
+        <h4>📺 Primeros 5 Episodios</h4>
+        <div class="episodes-list">
+          <span *ngFor="let episode of character.episode.slice(0, 5)" class="episode-tag">
+            {{ episode.split('/').pop() }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Botones de acción -->
+      <div class="action-buttons">
+        <button (click)="loadRandomCharacter()" class="btn btn-primary">
+          ➡️ Siguiente Personaje
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Estado inicial -->
+  <div *ngIf="!character && !loading && !error" class="initial-state">
+    <p>Presiona "Aleatorio" o busca un personaje para comenzar</p>
+  </div>
+</div>
