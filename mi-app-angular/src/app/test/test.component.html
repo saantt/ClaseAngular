@@ -1,8 +1,20 @@
-
 <h1>TASK</h1>
-<div *ngFor="let task of tasks">
-    <div>
-        <h2>{{ task.title }}</h2>
-        
+
+<div *ngIf="tasks.length > 0; else noTasks">
+    <div *ngFor="let task of tasks">
+        <div>
+            <h2>{{ task.title }}</h2>
+            <p>Status: {{ task.status }}</p>
+            <span [ngSwitch]="task.priority">
+                <span *ngSwitchCase ="'high'">🔴</span>
+                <span *ngSwitchCase="'medium'">🟡</span>
+                <span *ngSwitchCase="'low'">🟢</span>
+                <span *ngSwitchDefault>⚪</span>
+            </span>
+        </div>
     </div>
 </div>
+
+<ng-template #noTasks>
+    <p>No tasks available.</p>
+</ng-template>
