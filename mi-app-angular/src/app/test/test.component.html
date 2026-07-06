@@ -6,7 +6,7 @@
 
 <div *ngIf="tasks.length > 0; else noTasks">
     <div *ngFor="let task of tasks">
-        <div [ngClass] = "{'completed': task.status === 'completed'}">
+        <div [ngClass] = "{'completed': task.status === 'completed'}" [ngStyle] = "{'border-left': '5px solid ' + getPriorityColor(task.priority)}">
             <h2>{{ task.title }}</h2>
             <p>Status: {{ task.status }}</p>
             <span [ngSwitch]="task.priority">
