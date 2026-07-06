@@ -1,12 +1,16 @@
 <h1>TASK</h1>
+<div class="control-buttons">
+    <button class="btn-danger" (click)="limpiarTareas()">Vaciar Lista (Probar ngIf)</button>
+    <button class="btn-success" (click)="restaurarTareas()">Restaurar Lista</button>
+</div>
 
 <div *ngIf="tasks.length > 0; else noTasks">
     <div *ngFor="let task of tasks">
-        <div>
+        <div [ngClass] = "{'completed': task.status === 'completed'}">
             <h2>{{ task.title }}</h2>
             <p>Status: {{ task.status }}</p>
             <span [ngSwitch]="task.priority">
-                <span *ngSwitchCase ="'high'">🔴</span>
+                <span *ngSwitchCase="'high'">🔴</span>
                 <span *ngSwitchCase="'medium'">🟡</span>
                 <span *ngSwitchCase="'low'">🟢</span>
                 <span *ngSwitchDefault>⚪</span>

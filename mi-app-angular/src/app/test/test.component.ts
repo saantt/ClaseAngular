@@ -28,8 +28,18 @@ export class TestComponent implements OnInit {
       priority: 'low'
     }
 
-  ];
+    
 
+  ];
+  taskInit :Task [] = this.tasks;
+
+  limpiarTareas() {
+    this.tasks = [];
+  }
+
+  restaurarTareas() {
+    this.tasks = this.taskInit;
+  }
 
   constructor() { }
 
