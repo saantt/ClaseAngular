@@ -1,0 +1,33 @@
+<div class="container">
+  <header class="header">
+    <h1>🛍️ Galería de Productos</h1>
+    <div class="cart-summary">
+    </div>
+  </header>
+
+  <div class="main-content">
+    <!-- Sidebar con filtros -->
+    <aside class="sidebar">
+      <h3>Categorías</h3>
+     
+    </aside>
+
+    <!-- Área principal -->
+    <main class="products-area">
+      <div class="products-grid">
+        <app-product-card
+          *ngFor="let product of getFilteredProducts()"
+          [product]="product">
+        </app-product-card>
+      </div>
+    </main>
+
+    <!-- Carrito lateral -->
+    <aside class="cart-sidebar">
+      
+    </aside>
+  </div>
+
+  <!-- Modal de detalles -->
+
+</div>

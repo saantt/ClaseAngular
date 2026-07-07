@@ -1,12 +1,13 @@
-version: "3.8"
-
 services:
   angular-app:
     build: .
     container_name: angular11-app
-    working_dir: /app
+    working_dir: /app/mi-app-angular
+
     volumes:
-      - ./mi-app-angular:/app
+      - .:/app
+
     ports:
       - "4200:4200"
-    command: ng serve --host 0.0.0.0 --poll 2000
+
+    command: sh -c "npm install && ng serve --host 0.0.0.0 --poll 2000"
