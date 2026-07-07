@@ -1,13 +1,15 @@
-FROM node:12
-
-# Instala Angular CLI versión 11 de forma global dentro del contenedor
-RUN npm install -g @angular/cli@11
-
-# Carpeta de trabajo dentro del contenedor
+# Forzamos Node 14 Alpine (ligero y compatible)
+FROM node:14-alpine
+ 
 WORKDIR /app
-
-# Puerto que usa "ng serve" por defecto (esto es documentación, no publica el puerto por sí solo)
+ 
+# Copiamos los archivos de dependencias desde tu subcarpeta
+COPY mi-app-angular/package*.json ./
+ 
+# Instalamos la CLI de Angular globalmente dentro del contenedor
+RUN npm install -g @angular/cli@11.2.14 && npm install
+ 
+# Copiamos el resto del código
+COPY mi-app-angular/ .
+ 
 EXPOSE 4200
-
-# Comando que se ejecuta cuando el contenedor arranca
-CMD ["ng", "serve", "--host", "0.0.0.0", "--poll", "2000"]
