@@ -3,17 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductcartComponent } from './product-cart/productcart.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductCardComponent } from './product-card/product-card.component';
+ 
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductcartComponent,
-    ProductListComponent,
-    ProductCardComponent,
+    
     
   ],
   imports: [
