@@ -12,4 +12,6 @@ export class ProductcartComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
+
 }

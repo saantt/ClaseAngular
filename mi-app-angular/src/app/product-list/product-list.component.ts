@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../models/product';
+import { CartItem } from '../models/cartItem';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
+  products: Product[] = [];
+  cartItems: CartItem[] = [];
 
-   products: Product[] = [];
-
-   loadProducts(): void {
+  loadProducts(): void {
     this.products = [
       {
         id: 1,
@@ -69,8 +70,7 @@ export class ProductListComponent implements OnInit {
     ];
   }
 
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.loadProducts();
@@ -84,4 +84,28 @@ export class ProductListComponent implements OnInit {
     return this.products;
   }
 
+  onAddToCart(product: Product): void {
+    const existingItem = this.cartItems.find(
+      (item) => item.product.id === product.id,
+    );
+
+    if (existingItem) {
+      existingItem.quantity++;
+    } else {
+      this.cartItems.push({ product, quantity: 1 });
+    }
+
+    console.log(`${product.name} agregado al carrito`);
+  }
+
+  isInCart(productId: number): boolean {
+    return this.cartItems.some((item) => item.product.id === productId);
+  }
+
+  onRemoveFromCart(productId: number): void {
+    this.cartItems = this.cartItems.filter(
+      (item) => item.product.id !== productId,
+    );
+    console.log(`Producto con ID ${productId} eliminado del carrito`);
+  }
 }
