@@ -1,0 +1,164 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 45%, #7c3aed 100%);
+  padding: 2rem 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-shell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+}
+
+.form-card {
+  width: 100%;
+  max-width: 620px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
+  padding: 2rem;
+  backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-card::before {
+  content: '';
+  position: absolute;
+  inset: -40px auto auto -40px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.25), transparent 70%);
+  pointer-events: none;
+}
+
+.form-hero {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.icon-badge {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 0.8rem;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  font-size: 1.4rem;
+  color: white;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.25);
+}
+
+.form-hero h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #111827;
+}
+
+.form-hero p {
+  margin: 0.35rem 0 0;
+  color: #6b7280;
+}
+
+.modern-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+label {
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+input {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 14px;
+  padding: 0.85rem 1rem;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.25s ease;
+  background: #f9fafb;
+  color: #111827;
+}
+
+input::placeholder {
+  color: #9ca3af;
+}
+
+input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.16);
+  background: white;
+  transform: translateY(-1px);
+}
+
+input.ng-invalid.ng-touched {
+  border-color: #fb7185;
+  box-shadow: 0 0 0 3px rgba(251, 113, 133, 0.14);
+}
+
+.address-group {
+  margin-top: 0.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(124, 58, 237, 0.05));
+  border: 1px solid rgba(99, 102, 241, 0.12);
+}
+
+.address-group h3 {
+  margin: 0 0 0.8rem;
+  color: #4338ca;
+  font-size: 1rem;
+}
+
+button {
+  margin-top: 0.5rem;
+  border: none;
+  padding: 0.95rem 1.2rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(37, 99, 235, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.error {
+  color: #e11d48;
+  font-size: 0.82rem;
+  margin-top: -0.1rem;
+}
+
+@media (max-width: 640px) {
+  .form-card {
+    padding: 1.35rem;
+  }
+
+  .form-hero h1 {
+    font-size: 1.5rem;
+  }
+}
