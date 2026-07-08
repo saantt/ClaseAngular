@@ -1,13 +1,12 @@
 services:
   angular-app:
     build: .
+    image: angular11-node12
     container_name: angular11-app
-    working_dir: /app/mi-app-angular
-
+    working_dir: /app
     volumes:
-      - .:/app
-
+      - ./mi-app-angular:/app
+      - /app/node_modules
     ports:
       - "4200:4200"
-
     command: sh -c "npm install && ng serve --host 0.0.0.0 --poll 2000"

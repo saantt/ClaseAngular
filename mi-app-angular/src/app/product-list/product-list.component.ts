@@ -1,16 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../models/product';
+import { CartItem } from '../models/cartItem';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
+  products: Product[] = [];
+  cartItems: CartItem[] = [];
+  filter: string = 'all';
+  selectedProduct: Product | null = null;
+  showDetails: boolean = false;
 
-   products: Product[] = [];
-
-   loadProducts(): void {
+  loadProducts(): void {
     this.products = [
       {
         id: 1,
@@ -69,7 +73,6 @@ export class ProductListComponent implements OnInit {
     ];
   }
 
-
   constructor() { }
 
   ngOnInit(): void {
@@ -82,6 +85,59 @@ export class ProductListComponent implements OnInit {
 
   getFilteredProducts(): Product[] {
     return this.products;
+  }
+
+  onAddToCart(product: Product): void {
+    const existingItem = this.cartItems.find(
+      (item) => item.product.id === product.id,
+    );
+
+    if (existingItem) {
+      existingItem.quantity++;
+    } else {
+      this.cartItems.push({ product, quantity: 1 });
+    }
+
+    console.log(`${product.name} agregado al carrito`);
+  }
+
+  isInCart(productId: number): boolean {
+    return this.cartItems.some((item) => item.product.id === productId);
+  }
+
+  onRemoveFromCart(productId: number): void {
+    this.cartItems = this.cartItems.filter(
+      (item) => item.product.id !== productId,
+    );
+    console.log(`Producto con ID ${productId} eliminado del carrito`);
+  }
+  getCategories(): string[] {
+    const categories: string[] = ['all'];
+
+    for (const product of this.products) {
+      if (categories.indexOf(product.category) === -1) {
+        categories.push(product.category);
+      }
+    }
+
+    return categories;
+  }
+  onViewDetails(product: Product): void {
+    this.selectedProduct = product;
+    this.showDetails = true;
+  }
+  getTotalItems(): number {
+    return this.cartItems.reduce((total, item) => total + item.quantity, 0);
+  }
+  getTotalPrice(): number {
+    return this.cartItems.reduce(
+      (total, item) => total + item.product.price * item.quantity,
+      0,
+    );
+  }
+
+  closeDetails(): void {
+    this.showDetails = false;
   }
 
 }
