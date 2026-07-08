@@ -1,0 +1,45 @@
+.product-card {
+  background: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.product-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.content {
+  padding: 1rem 1.1rem 1.2rem;
+}
+
+h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+  color: #111827;
+}
+
+p {
+  margin: 0 0 1rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer span {
+  font-weight: 700;
+  color: #111827;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #f97316;
+  font-weight: 600;
+}
