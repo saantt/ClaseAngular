@@ -10,14 +10,17 @@ export class ProductCardComponent implements OnInit {
   @Input() product!: Product;
 
   @Input() products!: Product[];
-  @Input() isInCart: boolean = false; 
+  @Input() isInCart: boolean = false;
 
   @Output() addToCart = new EventEmitter<Product>();
   @Output() removeFromCart = new EventEmitter<number>();
+  @Output() viewDetails = new EventEmitter<Product>();
 
-  constructor() {}
 
-  ngOnInit(): void {}
+
+  
+
+  ngOnInit(): void { }
 
   onAddToCart(): void {
     if (this.product.stock > 0) {
@@ -27,5 +30,8 @@ export class ProductCardComponent implements OnInit {
   }
   onRemoveFromCart(): void {
     this.removeFromCart.emit(this.product.id);
+  }
+  onViewDetails(): void {
+    this.viewDetails.emit(this.product);
   }
 }

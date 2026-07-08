@@ -10,6 +10,9 @@ import { CartItem } from '../models/cartItem';
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
   cartItems: CartItem[] = [];
+  filter: string = 'all';
+  selectedProduct: Product | null = null;
+  showDetails: boolean = false;
 
   loadProducts(): void {
     this.products = [
@@ -70,7 +73,7 @@ export class ProductListComponent implements OnInit {
     ];
   }
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     this.loadProducts();
@@ -108,4 +111,33 @@ export class ProductListComponent implements OnInit {
     );
     console.log(`Producto con ID ${productId} eliminado del carrito`);
   }
+  getCategories(): string[] {
+    const categories: string[] = ['all'];
+
+    for (const product of this.products) {
+      if (categories.indexOf(product.category) === -1) {
+        categories.push(product.category);
+      }
+    }
+
+    return categories;
+  }
+  onViewDetails(product: Product): void {
+    this.selectedProduct = product;
+    this.showDetails = true;
+  }
+  getTotalItems(): number {
+    return this.cartItems.reduce((total, item) => total + item.quantity, 0);
+  }
+  getTotalPrice(): number {
+    return this.cartItems.reduce(
+      (total, item) => total + item.product.price * item.quantity,
+      0,
+    );
+  }
+
+  closeDetails(): void {
+    this.showDetails = false;
+  }
+
 }

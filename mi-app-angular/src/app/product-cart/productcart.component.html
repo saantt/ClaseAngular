@@ -1,1 +1,32 @@
-<p>productcart works!</p>
+<div class="cart">
+  <h3 class="cart-title">🛒 Carrito</h3>
+
+  <!-- Mensaje cuando el carrito está vacío -->
+  <div *ngIf="cartItems.length === 0" class="empty-cart">
+    <p>El carrito está vacío</p>
+  </div>
+
+  <!-- Lista de items cuando hay productos -->
+  <div *ngIf="cartItems.length > 0" class="cart-items">
+    <!-- Cada item del carrito -->
+    <div class="cart-item" *ngFor="let item of cartItems">
+      <img [src]="item.product.image" [alt]="item.product.name" />
+      <div class="item-info">
+        <p class="item-name">{{ item.product.name }}</p>
+        <p class="item-qty">Cantidad: {{ item.quantity }}</p>
+        <p class="item-subtotal">
+          ${{ (item.product.price * item.quantity) | number: '1.2-2' }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Resumen del carrito -->
+    <div class="cart-footer">
+      <div class="total-row">
+        <span>Total:</span>
+        <span class="total-amount">${{ totalPrice | number: '1.2-2' }}</span>
+      </div>
+      <button class="checkout-btn">Ir a Pagar</button>
+    </div>
+  </div>
+</div>

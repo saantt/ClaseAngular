@@ -3,13 +3,12 @@ services:
   angular-app:
     image: mi-app-angular:latest
     build: .
+    image: angular11-node12
     container_name: angular11-app
     working_dir: /app
     volumes:
       - ./mi-app-angular:/app
-      # MEJORA: Evita que tu entorno local borre los node_modules del contenedor
-      - /app/node_modules # < - CRUCIAL: Evita que tu entorno local borre los node_modules del contenedor
+      - /app/node_modules
     ports:
       - "4200:4200"
-    # MEJORA: Usar npx garantiza que use la versión exacta de Angular de tu proyecto
-    command: npx ng serve --host 0.0.0.0 --poll 2000
+    command: sh -c "npm install && ng serve --host 0.0.0.0 --poll 2000"
