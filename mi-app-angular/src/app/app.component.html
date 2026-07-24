@@ -1,1 +1,14 @@
-<router-outlet></router-outlet>
+<h1>Library Management System</h1>
+
+<book-form (bookCreated)="addBook($event)">
+</book-form>
+
+<hr>
+
+<library-stats [books]="books">
+</library-stats>
+
+<hr>
+
+<book-list [books]="books" (deleteBook)="deleteBook($event)" (toggleBook)="toggleBook($event)">
+</book-list>

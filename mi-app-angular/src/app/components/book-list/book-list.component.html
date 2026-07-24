@@ -1,1 +1,7 @@
-<p>book-list works!</p>
+<div *ngIf="books.length>0;else empty">
+    <book-card *ngFor="let book of books" [book]="book" (deleteBook)="delete($event)" (toggleBook)="toggle($event)">
+    </book-card>
+</div>
+<ng-template #empty>
+    <p>No books available.</p>
+</ng-template>

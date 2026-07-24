@@ -1,15 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Book } from 'src/app/model/book.mode';
+
 
 @Component({
-  selector: 'app-book-card',
+  selector: 'book-card',
   templateUrl: './book-card.component.html',
   styleUrls: ['./book-card.component.css']
 })
-export class BookCardComponent implements OnInit {
+export class BookCardComponent {
 
-  constructor() { }
+  @Input()
+  book!: Book;
 
-  ngOnInit(): void {
+  @Output()
+  deleteBook = new EventEmitter<number>();
+
+  @Output()
+  toggleBook = new EventEmitter<number>();
+
+  delete(): void {
+    this.deleteBook.emit(this.book.id);
   }
+  toggleStatus(): void {
 
+    this.toggleBook.emit(this.book.id);
+  }
 }

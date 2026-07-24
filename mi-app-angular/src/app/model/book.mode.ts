@@ -1,13 +1,13 @@
 export interface Book {
 
-    id: number;
+  id: number;
 
-    title: string;
+  title: string;
 
-    author: string;
+  author: string;
 
-    category: string;
+  category: string;
 
-    available: boolean;
+  available: boolean;
 
-} 
+}

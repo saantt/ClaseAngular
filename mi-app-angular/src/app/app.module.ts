@@ -8,11 +8,14 @@ import { BookListComponent } from './components/book-list/book-list.component';
 import { BookCardComponent } from './components/book-card/book-card.component';
 import { LibraryStatsComponent } from './components/library-stats/library-stats.component';
 import { HighlightBookDirective } from './directives/highlight-book.directive';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 
 
 @NgModule({
   declarations: [AppComponent, BookFormComponent, BookListComponent, BookCardComponent, LibraryStatsComponent, HighlightBookDirective],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule,ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
