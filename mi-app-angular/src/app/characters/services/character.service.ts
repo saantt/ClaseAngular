@@ -8,7 +8,7 @@ import { Character, CharacterApiResponse } from '../models/characters.model';
 })
 export class CharacterService {
 
-  private readonly apiURL = 'https://rickandmortyapi.com/api/character'; 
+  private readonly apiURL = 'https://rickandmortyapi.com/api/character';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -18,6 +18,16 @@ export class CharacterService {
 
   getCharacter(id: number): Observable<Character> {
     return this.httpClient.get<Character>(`${this.apiURL}/${id}`);
+  }
+
+  searchByName(page: number = 1, name: string = ''): Observable<CharacterApiResponse> {
+    let url = `${this.apiURL}?page=${page}`;
+
+    if (name) {
+      url += `&name=${encodeURIComponent(name)}`;
+    }
+
+    return this.httpClient.get<CharacterApiResponse>(url);
   }
 
 }

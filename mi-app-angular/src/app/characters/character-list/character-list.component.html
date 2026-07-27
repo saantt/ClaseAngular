@@ -1,5 +1,15 @@
 <h2>Personajes</h2>
 
+<div style="margin-bottom: 16px;">
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    placeholder="Buscar por nombre"
+    (keyup.enter)="searchByName()"
+  />
+  <button type="button" (click)="searchByName()">Buscar</button>
+</div>
+
 <p *ngIf="loading">Cargando personajes...</p>
 <p *ngIf="error">Ocurrio un error al consultar la API.</p>
 

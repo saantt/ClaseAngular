@@ -12,23 +12,49 @@ export class CharacterListComponent implements OnInit {
   characters: Character[] = [];
   loading = false;
   error = false;
+  searchTerm = '';
 
   constructor(private characterService: CharacterService) { }
 
   ngOnInit(): void {
+    this.loadCharacters();
+  }
 
+  private loadCharacters(): void {
     this.loading = true;
     this.characterService.getCharacters().subscribe({
       next: (response) => {
         this.characters = response.results;
         this.loading = false;
+        this.error = false;
       },
       error: () => {
         this.error = true;
         this.loading = false;
       }
     });
+  }
 
+  searchByName(): void {
+    const term = this.searchTerm.trim();
+
+    if (!term) {
+      this.loadCharacters();
+      return;
+    }
+
+    this.loading = true;
+    this.characterService.searchByName(1, term).subscribe({
+      next: (response) => {
+        this.characters = response.results;
+        this.loading = false;
+        this.error = false;
+      },
+      error: () => {
+        this.error = true;
+        this.loading = false;
+      }
+    });
   }
 
 }
