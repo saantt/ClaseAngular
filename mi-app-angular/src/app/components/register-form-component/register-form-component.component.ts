@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { withoutSpaces } from 'src/app/validators/custom-validator';
 
 @Component({
   selector: 'register-form-component',
@@ -18,7 +19,7 @@ export class RegisterFormComponentComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.email, Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(6), withoutSpaces]],
       address: this.formBuilder.group({
         street: ['', Validators.required],
         city: ['', Validators.required],
@@ -47,6 +48,9 @@ export class RegisterFormComponentComponent implements OnInit {
   }
   get phones(): FormArray {
     return this.registerForm.get('phoneNumbers') as FormArray;
+  }
+  get password(): AbstractControl | null {
+    return this.registerForm.get('password');
   }
   createPhone(): FormGroup {
     return this.formBuilder.group({ number: ['', Validators.required] })

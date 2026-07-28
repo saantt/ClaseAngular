@@ -12,6 +12,9 @@
         <div>
             <label for="password">Password: </label>
             <input type="password" id="password" formControlName="password">
+            <small class="error" *ngIf="password!.touched && password!.hasError('onlySpaces')">No puede ser solo
+                espacios en blanco.</small>
+
         </div>
         <div>
             <label for="kindUser">Kind User:</label>
