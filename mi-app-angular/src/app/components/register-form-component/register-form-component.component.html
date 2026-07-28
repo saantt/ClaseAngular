@@ -13,6 +13,29 @@
             <label for="password">Password: </label>
             <input type="password" id="password" formControlName="password">
         </div>
+        <fieldset formGroupName="address">
+            <legend>Address</legend>
+            <div>
+                <label for="street">Street: </label>
+                <input type="text" id="street" formControlName="street">
+            </div>
+            <div>
+                <label for="city">City: </label>
+                <input type="text" id="city" formControlName="city">
+            </div>
+            <div>
+                <label for="postCode">PostCode: </label>
+                <input type="text" id="postCode" formControlName="postCode">
+            </div>
+        </fieldset>
+        <fieldset formArrayName="phoneNumbers">
+            <legend>Phones:</legend>
+            <div *ngFor="let phone of phones.controls; let i=index" [formGroupName]="i">
+                <input type="text" id="number" formControlName="number" placeholder="addPhone">
+                <button type="button" (click)="deletePhone(i)">Delete</button>
+            </div>
+            <button type="button" (click)="addPhone()">Add Phone</button>
+        </fieldset>
 
         <button type="submit" [disabled]="registerForm.invalid">Register</button>
     </form>

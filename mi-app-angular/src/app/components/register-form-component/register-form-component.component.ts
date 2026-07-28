@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'register-form-component',
@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./register-form-component.component.css']
 })
 export class RegisterFormComponentComponent implements OnInit {
+
 
   registerForm!: FormGroup;
 
@@ -17,11 +18,32 @@ export class RegisterFormComponentComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.email, Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      address: this.formBuilder.group({
+        street: ['', Validators.required],
+        city: ['', Validators.required],
+        postCode: ['']
+      }),
+      phoneNumbers: this.formBuilder.array([
+      ])
     });
   }
-  onSubmit():void{
+  onSubmit(): void {
     console.log("FormSubmit", this.registerForm.value)
+  }
+  get phones(): FormArray {
+    return this.registerForm.get('phoneNumbers') as FormArray;
+  }
+  createPhone(): FormGroup {
+    return this.formBuilder.group({ number: ['', Validators.required] })
+
+  }
+  addPhone(): void {
+    this.phones.push(this.createPhone());
+  }
+  deletePhone(index: number) {
+    this.phones.removeAt(index);
+
   }
 
 }
