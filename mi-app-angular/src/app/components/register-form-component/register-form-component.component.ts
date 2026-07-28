@@ -30,7 +30,18 @@ export class RegisterFormComponentComponent implements OnInit {
       lastName: [''],
       socialReason: ['']
     });
+
+    this.registerForm.get('kindUser')!.valueChanges.subscribe(tipo => {
+      this.updateValidatorsKindUser(tipo);
+    });
+    this.updateValidatorsKindUser(this.registerForm.get('kindUser')!.value);
+
+
   }
+
+
+
+
   onSubmit(): void {
     console.log("FormSubmit", this.registerForm.value)
   }
@@ -46,6 +57,23 @@ export class RegisterFormComponentComponent implements OnInit {
   }
   deletePhone(index: number) {
     this.phones.removeAt(index);
+
+  }
+  private updateValidatorsKindUser(kind: string): void {
+    const lastName = this.registerForm.get('lastName');
+    const socialReason = this.registerForm.get('socialReason');
+
+    if (kind === 'company') {
+      socialReason!.setValidators([Validators.required]);
+      lastName!.clearValidators();
+    } else {
+      lastName!.setValidators([Validators.required]);
+      socialReason!.clearValidators();
+    }
+
+    // Sin esto, Angular no vuelve a evaluar la validez del control.
+    lastName!.updateValueAndValidity();
+    socialReason!.updateValueAndValidity();
 
   }
 

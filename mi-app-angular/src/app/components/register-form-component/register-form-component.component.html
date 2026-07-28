@@ -23,6 +23,11 @@
         <div *ngIf="registerForm.get('kindUser')?.value==='natural'">
             <label for="lastName">LastName: </label>
             <input type="text" id="lastName" formControlName="lastName">
+
+        </div>
+        <div *ngIf="registerForm.get('kindUser')?.value === 'company'">
+            <label for="socialReason">Social Reason</label>
+            <input id="socialReason" type="text" formControlName="socialReason">
         </div>
 
 
