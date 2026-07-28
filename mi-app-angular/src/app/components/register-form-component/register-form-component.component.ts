@@ -25,7 +25,10 @@ export class RegisterFormComponentComponent implements OnInit {
         postCode: ['']
       }),
       phoneNumbers: this.formBuilder.array([
-      ])
+      ]),
+      kindUser: ['natural', Validators.required],
+      lastName: [''],
+      socialReason: ['']
     });
   }
   onSubmit(): void {

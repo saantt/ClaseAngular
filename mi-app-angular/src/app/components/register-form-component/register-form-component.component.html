@@ -13,6 +13,20 @@
             <label for="password">Password: </label>
             <input type="password" id="password" formControlName="password">
         </div>
+        <div>
+            <label for="kindUser">Kind User:</label>
+            <select id="kindUser" formControlName="kindUser">
+                <option value="natural">Natural</option>
+                <option value="company">Company</option>
+            </select>
+        </div>
+        <div *ngIf="registerForm.get('kindUser')?.value==='natural'">
+            <label for="lastName">LastName: </label>
+            <input type="text" id="lastName" formControlName="lastName">
+        </div>
+
+
+
         <fieldset formGroupName="address">
             <legend>Address</legend>
             <div>
