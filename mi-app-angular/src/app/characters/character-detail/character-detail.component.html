@@ -2,7 +2,7 @@
   <p>Cargando detalle del personaje...</p>
 </div>
 
-<div *ngIf="!loading && character" class="character-detail">
+<div *ngIf="!loading && character">
   <img [src]="character.image" [alt]="character.name" />
   <h2>{{ character.name }}</h2>
   <p><strong>Estado:</strong> {{ character.status }}</p>

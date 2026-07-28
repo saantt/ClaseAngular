@@ -17,7 +17,7 @@ export class CharacterDetailComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
     private characterService: CharacterService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
 

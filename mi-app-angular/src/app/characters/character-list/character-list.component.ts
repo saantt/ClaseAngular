@@ -14,6 +14,7 @@ export class CharacterListComponent implements OnInit {
   error = false;
   searchTerm = '';
 
+
   constructor(private characterService: CharacterService) { }
 
   ngOnInit(): void {
