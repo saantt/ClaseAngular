@@ -1,0 +1,20 @@
+.types {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.badge {
+  color: white;
+  background: #777777;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.stats {
+  list-style: none;
+  padding: 0;
+}
+ 

@@ -1,0 +1,23 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Pokemon, PokemonListResponse } from '../pokemon/models/pokemon.models';
+import { Observable } from 'rxjs/internal/Observable';
+
+@Injectable({
+  providedIn: 'root'
+
+})
+export class PokemonService {
+ private readonly API_BASE = 'https://pokeapi.co/api/v2';
+
+  constructor(private http: HttpClient) { }
+
+  getList (limit =20, offset =0):Observable<PokemonListResponse> {
+    return this.http.get<PokemonListResponse>(`${this.API_BASE}/pokemon?limit=${limit}&offset=${offset}`);
+  }
+
+  getByName(name: string): Observable<Pokemon> {
+    return this.http.get<Pokemon>(`${this.API_BASE}/pokemon/${name}`);
+  }
+
+}

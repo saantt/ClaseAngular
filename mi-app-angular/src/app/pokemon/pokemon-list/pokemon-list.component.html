@@ -1,0 +1,14 @@
+<h1>Pokémon (módulo con Lazy Loading)</h1>
+<p>Datos en vivo desde <code>pokeapi.co</code>, cargados solo al entrar a esta ruta.</p>
+
+<ng-container *ngIf="pokemonList$ | async as data; else loading">
+  <ul class="grid">
+    <li *ngFor="let item of data.results; trackBy: trackByName">
+      <a [routerLink]="['/pokemon', item.name]">{{ item.name }}</a>
+    </li>
+  </ul>
+</ng-container>
+
+<ng-template #loading>
+  <p>Cargando…</p>
+</ng-template>

@@ -1,0 +1,26 @@
+.topics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.topic {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.topic h2 {
+  margin-top: 0;
+  font-size: 16px;
+  color: #1976d2;
+}
+
+code {
+  background: #eef1f5;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+ 

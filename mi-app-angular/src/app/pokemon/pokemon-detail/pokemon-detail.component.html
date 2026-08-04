@@ -1,0 +1,16 @@
+<p><a routerLink="/pokemon">← Volver al listado</a></p>
+
+<ng-container *ngIf="pokemon">
+  <h1>{{ pokemon.name }}</h1>
+  <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" width="120" height="120">
+
+  <div class="types">
+    <span class="badge" *ngFor="let t of pokemon.types">{{ t.type.name }}</span>
+  </div>
+
+  <ul class="stats">
+    <li>Altura: {{ pokemon.height }}</li>
+    <li>Peso: {{ pokemon.weight }}</li>
+  </ul>
+</ng-container>
+ 
