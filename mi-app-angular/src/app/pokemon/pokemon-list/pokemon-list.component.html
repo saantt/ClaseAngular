@@ -4,7 +4,7 @@
 <ng-container *ngIf="pokemonList$ | async as data; else loading">
   <ul class="grid">
     <li *ngFor="let item of data.results; trackBy: trackByName">
-      <a [routerLink]="['/pokemon', item.name]">{{ item.name }}</a>
+      <a [routerLink]="['/pokemon', item.name]">{{ item.name | capitalize }} </a>
     </li>
   </ul>
 </ng-container>
