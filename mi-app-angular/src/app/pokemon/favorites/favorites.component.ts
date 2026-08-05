@@ -10,7 +10,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 export class FavoritesComponent implements OnInit {
   favorites: string[] = [];
 
-  constructor(private authService: AuthService, private pokemonService: PokemonService) { }
+  constructor(public authService: AuthService, private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
     this.favorites = this.pokemonService.getFavorites();

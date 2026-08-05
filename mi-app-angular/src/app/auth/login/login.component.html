@@ -6,7 +6,7 @@
 
 <form (ngSubmit)="login()">
   <label for="username">Usuario</label>
-  <input id="username" name="username" placeholder="ej: profesor" required>
+  <input id="username" name="username" placeholder="ej: profesor" required [(ngModel)]="username" />
   <button type="submit">Ingresar</button>
 </form>
 

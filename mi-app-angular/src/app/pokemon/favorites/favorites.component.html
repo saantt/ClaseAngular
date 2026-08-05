@@ -1,5 +1,5 @@
 <h1>Mis favoritos</h1>
-<p>Ruta protegida por <code>AuthGuard.</code> Sesión actual: <strong>{{ authService.getUser() }}</strong></p>
+<p>Ruta protegida por <code>AuthGuard.</code> Sesión actual: <strong>{{ authService.getUsername() }}</strong></p>
 
 <ul *ngIf="favorites.length; else empty">
   <li *ngFor="let name of favorites">
