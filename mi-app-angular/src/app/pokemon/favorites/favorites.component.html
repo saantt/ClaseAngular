@@ -1,0 +1,14 @@
+<h1>Mis favoritos</h1>
+<p>Ruta protegida por <code>AuthGuard.</code> Sesión actual: <strong>{{ authService.getUser() }}</strong></p>
+
+<ul *ngIf="favorites.length; else empty">
+  <li *ngFor="let name of favorites">
+    <a [routerLink]="['/pokemon', name]">{{ name | capitalize }}</a>
+  </li>
+</ul>
+
+<ng-template #empty>
+  <p>Aún no marcaste ningún Pokémon como favorito.</p>
+</ng-template>
+
+<button type="button" (click)="authService.logout()" routerLink="/login">Cerrar sesión</button>

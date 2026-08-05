@@ -22,5 +22,11 @@ export class PokemonDetailComponent implements OnInit {
       });
     } 
   }
+  toggleFavorite(pokemonName: string): void {
+    this.pokemonService.toggleFavorite(pokemonName);
+  }
+  isFavorite(pokemonName: string): boolean {
+    return this.pokemonService.isFavorite(pokemonName);
+  }
 
 }

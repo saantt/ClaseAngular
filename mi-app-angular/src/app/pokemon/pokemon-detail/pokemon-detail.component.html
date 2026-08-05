@@ -2,12 +2,7 @@
 
 <ng-container *ngIf="pokemon">
   <h1>{{ pokemon.name | capitalize }}</h1>
-  <img
-    [src]="pokemon.sprites.front_default"
-    [alt]="pokemon.name"
-    width="120"
-    height="120"
-  />
+  <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" width="120" height="120" />
 
   <div class="types">
     <span class="badge" *ngFor="let t of pokemon.types" [style.background]="t.type.name | pokemonType">
@@ -19,4 +14,7 @@
     <li>Altura: {{ pokemon.height }}</li>
     <li>Peso: {{ pokemon.weight }}</li>
   </ul>
+  <button type="button" (click)="toggleFavorite(pokemon.name)">
+    {{ isFavorite(pokemon.name) ? '★ Quitar de favoritos' : '☆ Agregar a favoritos' }}
+  </button>
 </ng-container>

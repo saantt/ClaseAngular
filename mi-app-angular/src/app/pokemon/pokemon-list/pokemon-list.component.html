@@ -1,5 +1,7 @@
 <h1>Pokémon (módulo con Lazy Loading)</h1>
 <p>Datos en vivo desde <code>pokeapi.co</code>, cargados solo al entrar a esta ruta.</p>
+<p><a routerLink="/pokemon/favorites">Ver favoritos (ruta protegida por Guard) →</a></p>
+
 
 <ng-container *ngIf="pokemonList$ | async as data; else loading">
   <ul class="grid">
