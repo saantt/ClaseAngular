@@ -12,7 +12,7 @@ export class PokemonDetailComponent implements OnInit {
 
   pokemon?: Pokemon;
 
-  constructor(private route:ActivatedRoute, private pokemonService: PokemonService) { }
+  constructor(private route: ActivatedRoute, private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
     const name = this.route.snapshot.paramMap.get('name');
@@ -20,13 +20,16 @@ export class PokemonDetailComponent implements OnInit {
       this.pokemonService.getByName(name).subscribe(pokemon => {
         this.pokemon = pokemon;
       });
-    } 
+    }
   }
   toggleFavorite(pokemonName: string): void {
     this.pokemonService.toggleFavorite(pokemonName);
   }
   isFavorite(pokemonName: string): boolean {
     return this.pokemonService.isFavorite(pokemonName);
+  }
+  triggerNotFoundError(): void {
+    this.pokemonService.getByName('nonexistent-pokemon').subscribe();
   }
 
 }

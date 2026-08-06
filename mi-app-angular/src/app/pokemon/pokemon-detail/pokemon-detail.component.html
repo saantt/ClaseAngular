@@ -17,4 +17,7 @@
   <button type="button" (click)="toggleFavorite(pokemon.name)">
     {{ isFavorite(pokemon.name) ? '★ Quitar de favoritos' : '☆ Agregar a favoritos' }}
   </button>
+  <button type="button" class="danger" (click)="triggerNotFoundError()">
+    Provocar error 404 (demo)
+  </button>
 </ng-container>
